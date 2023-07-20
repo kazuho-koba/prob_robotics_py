@@ -39,3 +39,28 @@ plt.bar(freqs['lidar'], freqs['probs'], color='blue', alpha=0.3)    # 確率分�
 
 # 図を表示
 plt.show()
+
+# scipyを使ってもっと気軽にガウス分布に基づく確率密度関数を表示する
+zs = range(190, 230)
+
+# ガウス分布の仕様決定に必要な要素を再計算（2．2節で実行したもの）
+mean1 = sum(data["lidar"].values)/len(data["lidar"].values)     # 定義に則った計算
+zs_data_list = data["lidar"].values
+mean = sum(zs_data_list)/len(zs_data_list)
+diff_square = [(z-mean)**2 for z in zs_data_list]
+sampling_var = sum(diff_square)/len(zs_data_list)           # 標本分散
+stddev1 = math.sqrt(sampling_var)
+
+ys = [norm.pdf(z, mean1, stddev1) for z in zs]
+plt.plot(zs, ys)
+plt.show()
+
+# 同じくscipyを使って累積分布関数を表示する
+ys = [norm.cdf(z, mean1, stddev1) for z in zs]
+plt.plot(zs, ys, color='red')
+plt.show()
+
+# 台形公式を使って計算した離散化確率分布を累積確率分布の引き算で再計算してみる
+ys = [norm.cdf(z+0.5, mean1, stddev1) - norm.cdf(z-0.5, mean1, stddev1) for z in zs]
+plt.bar(zs, ys)
+plt.show()
