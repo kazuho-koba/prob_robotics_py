@@ -12,7 +12,7 @@ from scipy.stats import norm
 
 
 # Import data
-data = pd.read_csv("../../LNPR_BOOK_CODES/sensor_data/sensor_data_600.txt",
+data = pd.read_csv("../LNPR_BOOK_CODES/sensor_data/sensor_data_600.txt",
                    delimiter=" ", header=None, names=("date", "time", "lr", "lidar"))
 
 # Draw a histogram of the data
