@@ -40,7 +40,7 @@ class World:
                 self.one_step(i, elems, ax)  # stop animation when debugging
         else:
             self.ani = anm.FuncAnimation(fig, self.one_step, fargs=(
-                elems, ax), frames=int(self.time_span/self.time_interval)+1, interval=int(self.time_interval*1000), repeat=False)
+                elems, ax), frames=int(self.time_span/self.time_interval)+1, interval=int(self.time_interval*100), repeat=False)
             plt.show()
 
         # draw objects which appended

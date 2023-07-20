@@ -40,7 +40,7 @@ class World:
                 self.one_step(i, elems, ax)  # stop animation when debugging
         else:
             self.ani = anm.FuncAnimation(fig, self.one_step, fargs=(
-                elems, ax), frames=int(self.time_span/self.time_interval)+1, interval=int(self.time_interval*1000), repeat=False)
+                elems, ax), frames=int(self.time_span/self.time_interval)+1, interval=int(self.time_interval*100), repeat=False)
             plt.show()
 
         # draw objects which appended
@@ -52,7 +52,7 @@ class World:
         while elems:
             elems.pop().remove()
         time_str = "t = %.2f[s]" % (self.time_interval*i)
-        elems.append(ax.text(-4.5, 4.5, "t= "+str(i), fontsize=10))
+        elems.append(ax.text(-4.5, 4.5, "t= "+str(i/10), fontsize=10))
         for obj in self.objects:
             obj.draw(ax, elems)
             if hasattr(obj, "one_step"):
