@@ -105,7 +105,7 @@ class Robot(IdealRobot):
         self.theta_noise = norm(scale=noise_std)
         self.bias_rate_nu = norm.rvs(loc=1.0, scale=bias_rate_stds[0])
         self.bias_rate_omega = norm.rvs(loc=1.0, scale=bias_rate_stds[1])
-        print(self.bias_rate_nu, self.bias_rate_omega)
+        # print(self.bias_rate_nu, self.bias_rate_omega)
 
         self.stuck_pdf = expon(scale=expected_stuck_time)
         self.escape_pdf = expon(scale=expected_escape_time)

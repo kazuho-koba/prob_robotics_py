@@ -25,7 +25,7 @@ class World:
         self.objects.append(obj)
 
     def draw(self):
-        fig = plt.figure(figsize=(4, 4))  # prepare fig of 4*4 inch
+        fig = plt.figure(figsize=(8, 8))  # prepare fig of 4*4 inch
         ax = fig.add_subplot(111)  # prepare subplot
         ax.set_aspect('equal')  # set aspect ratio same as coordinate
         ax.set_xlim(-5, 5)  # draw x-axis between -5m*5m
@@ -36,7 +36,7 @@ class World:
         elems = []
 
         if self.debug:
-            for i in range(1000):
+            for i in range(int(self.time_span/self.time_interval)):
                 self.one_step(i, elems, ax)  # stop animation when debugging
         else:
             self.ani = anm.FuncAnimation(fig, self.one_step, fargs=(
@@ -51,7 +51,8 @@ class World:
     def one_step(self, i, elems, ax):
         while elems:
             elems.pop().remove()
-        time_str = "t = %.2f[s]" % (self.time_interval*i)
+        time_str = "t = %.1f[s]" % (self.time_interval*i)
+        print(time_str)
         elems.append(ax.text(-4.5, 4.5, "t= "+str(round(i*self.time_interval, 1)), fontsize=10))
         for obj in self.objects:
             obj.draw(ax, elems)
