@@ -22,11 +22,11 @@ class Camera(IdealCamera):
     def __init__(self, env_map,
                  distance_range=(0.5, 6.0),
                  direction_range=(-math.pi/3, math.pi/3),
-                 distance_noise_rate=0.1,
-                 direction_noise=math.pi/90,
-                 distance_bias_rate_stddev=0.1,
-                 direction_bias_stddev=math.pi/90,
-                 phantom_prob=0.1, phantom_range_x=(-5.0, 5.0),
+                 distance_noise_rate=0.01,
+                 direction_noise=math.pi/900,
+                 distance_bias_rate_stddev=0.01,
+                 direction_bias_stddev=math.pi/900,
+                 phantom_prob=0.01, phantom_range_x=(-5.0, 5.0),
                  phantom_range_y=(-5.0, 5.0),
                  oversight_prob=0.1, occulusion_prob=0.0):
         super().__init__(env_map, distance_range, direction_range)
