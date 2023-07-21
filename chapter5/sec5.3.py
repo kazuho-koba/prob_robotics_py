@@ -47,8 +47,8 @@ class Particle:
 
 # モンテカルロ位置推定（Monte Carlo Localization）を行うクラス
 class Mcl:
-    # 初期化：粒子の数numとそれぞれの初期姿勢からParticleのオブジェクトを生成
-    def __init__(self, init_pose, num, motion_noise_stds):
+    # 初期化：粒子の数numとそれぞれの初期姿勢からParticleのオブジェクトを生成（motion_noise_stdsのデフォルト値は5.3_2.pyでシミュレーションにより決定）
+    def __init__(self, init_pose, num, motion_noise_stds={"nn":0.23, "no":0.001 ,"on":0.11, "oo":0.05}):
         self.particles = [Particle(init_pose) for i in range(num)]
 
         v = motion_noise_stds                                           # 粒子の位置に加わる、ガウス分布に従う雑音に関する標準偏差
@@ -91,10 +91,21 @@ def trial(motion_noise_stds):
     initial_pose = np.array([0, 0, 0]).T
     estimator = Mcl(initial_pose, 100, motion_noise_stds)
     circling = EstimationAgent(time_interval, 0.2, 10.0/180*math.pi, estimator)
+    straight = EstimationAgent(time_interval, 0.1, 0, estimator)
     r = Robot(initial_pose, sensor=None, agent=circling, color='red')
     world.append(r)
     world.draw()
-trial({"nn":0.1, "no":0.2, "on":0.3, "oo":0.4})
+trial({"nn":0.23, "no":0.001, "on":0.11, "oo":0.05})
+
+################################
+# 粒子ではなく実際にロボットを100台生成してチェック
+################################
+time_interval = 0.1
+world = World(30, time_interval, debug=False)
+for i in range(100):
+    r = Robot(np.array([0,0,0]).T, sensor=None, agent=Agent(0.2, 10.0/180*math.pi), color="gray")
+    world.append(r)
+world.draw()
 
 # # 環境オブジェクトを生成（Sim時間30秒、1ステップ0.1秒）
 # world = World(30, 0.1)
