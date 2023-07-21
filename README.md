@@ -1,2 +1,3 @@
 # prob_robotics_py
-learning on probabilistic robotics in python
+講談社「詳解確率ロボティクス Pythonによる基礎アルゴリズムの実装 著：上田隆一」の学習用。
+演習用のセンサデータ等はそのまま継承しつつ、各コードについてはUbuntu22.04環境で動くように書き起こしを行っている（オリジナルはJupyter Notebookで動かすことが前提）。
