@@ -123,4 +123,4 @@ def trial_gaussian():
     world.append(r)
 
     world.draw()
-trial_gaussian()
+# trial_gaussian()
