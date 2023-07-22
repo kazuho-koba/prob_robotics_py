@@ -39,7 +39,7 @@ def kldmcl_global_trial(animation):
 if __name__=='__main__':
     ok = 0
     for i in range(1000):
-        actual, estm = kldmcl_global_trial(False)
+        actual, estm = kldmcl_global_trial(True)
         diff = math.sqrt((actual[0]-estm[0])**2 + (actual[1] - estm[1])**2)
         print(i, " 真値： ", actual, " 推定値： ", estm, " 誤差： ", diff)
         if diff <= 1.0:
