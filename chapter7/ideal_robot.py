@@ -52,7 +52,7 @@ class World:
         while elems:
             elems.pop().remove()
         time_str = "t = %.1f[s]" % (self.time_interval*i)
-        print(time_str)
+        # print(time_str)
         elems.append(ax.text(-4.5, 4.5, "t= "+str(round(i*self.time_interval, 1)), fontsize=10))
         for obj in self.objects:
             obj.draw(ax, elems)
