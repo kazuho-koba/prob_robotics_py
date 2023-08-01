@@ -209,7 +209,7 @@ def trial_landmark_display():
 
     # 地図生成、ランドマーク追加
     m = Map()
-    for ln in [(-4,2), (2,-3), (3,3)]: m.append_landmark(Landmark(*ln))
+    for ln in [(-4,2), (2,-3)]: m.append_landmark(Landmark(*ln))
     world.append(m)
 
     # ロボットの生成、追加

@@ -26,7 +26,7 @@ class Camera(IdealCamera):
                  direction_noise=math.pi/900,
                  distance_bias_rate_stddev=0.01,
                  direction_bias_stddev=math.pi/900,
-                 phantom_prob=0.01, phantom_range_x=(-5.0, 5.0),
+                 phantom_prob=0.001, phantom_range_x=(-5.0, 5.0),
                  phantom_range_y=(-5.0, 5.0),
                  oversight_prob=0.1, occulusion_prob=0.0):
         super().__init__(env_map, distance_range, direction_range)
